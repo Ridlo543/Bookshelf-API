@@ -1,37 +1,37 @@
 // mengimpor handler
 const {
-  addBookHandler,
-  getAllBooksHandler,
-  getBookByIdHandler,
-  updateBookByIdHandler,
-  deleteBookByIdHandler,
+  addBook,
+  getAllBook,
+  getBookByID,
+  updateBook,
+  deleteBook,
 } = require('./handler');
 
 // mendefinisikan rute
 const routes = [{
   method: 'POST', // method post untuk menambahkan data
   path: '/books', // rute akan di akses di '/books'
-  handler: addBookHandler, // saat di akses panggil addBookHandler
+  handler: addBook, // saat di akses panggil addBook
 },
 {
   method: 'GET', // method get untuk mendapatkan data
   path: '/books', // rute akan di akses di '/books'
-  handler: getAllBooksHandler, // saat di akses panggil getAllBooksHandler
+  handler: getAllBook, // saat di akses panggil getAllBook
 },
 {
   method: 'GET', // method get untuk mendapatkan data berdasarkan id
   path: '/books/{id}', // rute akan di akses di '/books/{id}'
-  handler: getBookByIdHandler, // saat di akses panggil getBookByIdHandler
+  handler: getBookByID, // saat di akses panggil getBookByID
 },
 {
   method: 'PUT', // method put untuk memperbarui data
   path: '/books/{id}', // rute akan di akses di '/books/{id}'
-  handler: updateBookByIdHandler, // saat di akses panggil updateBookByIdHandler
+  handler: updateBook, // saat di akses panggil updateBook
 },
 {
   method: 'DELETE', // method delete untuk menghapus data
   path: '/books/{id}', // rute akan di akses di '/books/{id}'
-  handler: deleteBookByIdHandler, // saat di akses panggil deleteBookByIdHandler
+  handler: deleteBook, // saat di akses panggil deleteBook
 },
 ];
 
