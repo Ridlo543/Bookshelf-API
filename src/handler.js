@@ -2,7 +2,7 @@ const { nanoid } = require('nanoid'); // import nanoid
 const books = require('./books'); // import books
 
 // Fungsi untuk menambahkan buku
-const addBookHandler = (request, h) => {
+const addBook = (request, h) => {
   const {
     name,
     year,
@@ -75,7 +75,7 @@ const addBookHandler = (request, h) => {
 };
 
 // Fungsi untuk menampilkan seluruh buku
-const getAllBooksHandler = (request, h) => {
+const getAllBook = (request, h) => {
   const { name, reading, finished } = request.query;
   let bookList = [...books]; // copy array books
 
@@ -129,7 +129,7 @@ const getAllBooksHandler = (request, h) => {
 };
 
 // Mendapatkan buku berdasarkan ID yang diberikan
-const getBookByIdHandler = (request, h) => {
+const getBookByID = (request, h) => {
   const { id } = request.params;
 
   // Cari buku di array books
@@ -155,7 +155,7 @@ const getBookByIdHandler = (request, h) => {
 };
 
 // Handler untuk memperbarui buku berdasarkan ID
-const updateBookByIdHandler = (request, h) => {
+const updateBook = (request, h) => {
   const {
     name,
     year,
@@ -225,7 +225,7 @@ const updateBookByIdHandler = (request, h) => {
 };
 
 // Menghapus buku berdasarkan id
-const deleteBookByIdHandler = (request, h) => {
+const deleteBook = (request, h) => {
   const { id } = request.params;
 
   // Mencari index buku yang memiliki id yang diminta
@@ -253,9 +253,9 @@ const deleteBookByIdHandler = (request, h) => {
 
 // export method
 module.exports = {
-  addBookHandler,
-  getAllBooksHandler,
-  getBookByIdHandler,
-  updateBookByIdHandler,
-  deleteBookByIdHandler,
+  addBook,
+  getAllBook,
+  getBookByID,
+  updateBook,
+  deleteBook,
 };
