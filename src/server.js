@@ -1,30 +1,32 @@
+// Inisialisasi server Hapi import routes
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes');
 
-const server = Hapi.server({
-  port: 5000,
-  host: 'localhost',
-});
+// Inisialisasi server dengan port, host dan route
+const init = async () => {
+  const server = Hapi.server({
+    port: 5000, // Port yang digunakan
+    host: 'localhost', // Host yang digunakan
+    routes: {
+      cors: { // Menggunakan Cors
+        origin: ['*'], // Memberikan hak akses ke semua client
+      },
+    },
+  });
 
-server.route(routes);
+  // Memanggil route
+  server.route(routes);
 
-// Menerapkan CORS pada seluruh resource
-server.ext('onPreResponse', (request, h) => {
-  const { response } = request;
-  if (response.isBoom && response.output.statusCode === 404) {
-    return h.response('Not Found').code(404);
-  }
-
-  response.header('Access-Control-Allow-Origin', '*');
-  response.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  response.header('Access-Control-Allow-Headers', 'Content-Type');
-
-  return response;
-});
-
-const start = async () => {
+  // Menjalankan server
   await server.start();
-  console.log(`Server running at: ${server.info.uri}`);
+  console.log(`Server berjalan pada ${server.info.uri}`);
 };
 
-start();
+// Jika terjadi error pada proses yang dijalankan
+process.on('unhandledRejection', (err) => {
+  console.log(err);
+  process.exit(1);
+});
+
+// Memanggil fungsi init
+init();
