@@ -22,7 +22,7 @@ const addBook = (request, h) => {
     }).code(400);
   }
   // Cek apakah readPage lebih kecil dari pageCount
-  if (readPage >= pageCount) {
+  if (readPage > pageCount) {
     return h.response({
       status: 'fail',
       message: 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount',
@@ -88,7 +88,7 @@ const getAllBook = (request, h) => {
     }
     // Cek apakah ada query reading
     if (reading) {
-      if (reading === '1') {
+      if (reading === 1) {
         bookList = bookList.filter((book) => book.reading);
       } else {
         bookList = bookList.filter((book) => !book.reading);
@@ -96,7 +96,7 @@ const getAllBook = (request, h) => {
     }
     // Cek apakah ada query finished
     if (finished) {
-      if (finished === '1') {
+      if (finished === 1) {
         bookList = bookList.filter((book) => book.finished);
       } else {
         bookList = bookList.filter((book) => !book.finished);
