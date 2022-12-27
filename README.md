@@ -5,4 +5,5 @@ Project Bookshelf API Back-end Dicoding Course <br>
 - API dapat menampilkan seluruh buku
 - API dapat menampilkan detail buku
 - API dapat mengubah data buku
-- API dapat menghapus buku
+- API dapat menghapus buku<br><br>
+telahlulus pengujian postman
